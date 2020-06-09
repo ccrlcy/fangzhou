@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <% include ../partials/head %>
+ </head>
+ <body>
+  <% include ../partials/nav %>
+
+  <div class="container post post-new">
+  	<% include ./partials/header %>
+
+	  <div class="buttons">
+	  	<a href="/posts" class="btn btn-default">Back</a>
+	  	<% if(isAuthenticated && currentUser.id == post.author.id){ %>
+		  	<a href="/posts/<%= post._id %>/edit" class="btn btn-default">Edit</a>
+		  	<form action="/posts/<%= post._id %>?_method=delete" method="post">
+		  		<a href="#" class="btn btn-default" onclick="confirm('Do U want to delete this post?')">Delete</a>
+		  	</form>
+	  	<% } %>
+	  </div>
+
+	 	<div class="contentBox">
+	 		<h3 class="contentBoxTop"><%= post.title %></h3>
+	 		<div class="row">
+	 			<div class="col-sm-4 col-sm-push-8">
+	 				<div class="post-info">
+	 					<div><span>Author</span> : <%= post.author ? post.author.username : '' %></div>
+	 					<div><span>Created</span> : <%= post.createdDate %><%= post.createdTime %></div>
+	 					<% if(post.updatedAt) { %>
+	 					<div><span>Updated</span> : <%= post.updatedDate %> <%= post.updatedTime %></div>
+	 					<% } %>
+	 				</div>
+	 			</div>
+	 			<div class="col-sm-8 col-sm-pull-4">
+	 				<div class="post-body"><%= post.body %></div>
+	 			</div>
+	 		</div>
+	 	</div>
+
+  </div>
+</body>
+</html>

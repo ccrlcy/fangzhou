@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+	<% include ../partials/nav %>
+	<div class="hero-wrap" style="background-image: url('/images/bg_1.jpg');">
+	   <div class="overlay"></div>
+    	<div class="container">
+      	<div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        		<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+	        		<div class="text">
+           			<h1 class="mb-4 bread">계약자 입력</h1>
+          		</div>
+        		</div>
+      	</div>
+    	</div>
+  	</div>
+	<div class="container">
+		<div class="buttons">
+			<a href="/contracts/new" class="btn btn-default">New</a>
+		</div>
+
+		<div class="contract-menu">
+			<a href="/contracts">Back</a>	</div>
+		<h2>Show</h2>
+	</div>
+	<div class="container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="title">Name</th>
+					<th class="author">담당자</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% contracts.forEach(function(item){ %>
+				<tr>
+					<td class="">
+						<%= item.member.name %>
+					</td>
+					<td class="">
+						<%= item.fzcrew %>
+					</td>
+				</tr>
+				<% }) %>
+			</tbody>
+		</table>
+	</div>
+
+<% include ../partials/end %>
+</body>
+</html>

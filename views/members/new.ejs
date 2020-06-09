@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <% include ../partials/nav %>
+<!-- Header -->
+<div class="hero-wrap" style="background-image: url('/images/bg_1.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+      <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+        <div class="text">
+          <h1 class="mb-4 bread">Members</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section bg-light">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- 정보 입력  -->
+      <div class="col-lg-12 ">
+        <div class="sidebar-wrap bg-light">
+          <h3 class="heading mb-4">Advanced Search</h3>
+          <form class="" action="/members" method="post">
+            <div class="fields">
+              <h5 class="my-3 font-weight-normal text-muted">기본 정보</h5>
+              <div class="form-row">
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="name" name="name" value="" class="form-control" placeholder="이름">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="nameEn" name="nameEn" value="" class="form-control" placeholder="영문 이름">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="nameCn" name="nameCn" value="" class="form-control" placeholder="중문 이름">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <div class="select-wrap one-third">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="gender" id="gender" class="form-control">
+                      <option value="" disabled selected>성별</option>
+                      <option value="남자" >남자</option>
+                      <option value="여자" >여자</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="status" id="status" class="form-control">
+                      <option value="" disabled selected>진행상황</option>
+                      <option value="온라인 상담" >온라인 상담</option>
+                      <option value="방문상담" >방문상담</option>
+                      <option value="계약고려" >계약고려</option>
+                      <option value="계약완료" >계약완료</option>
+                      <option value="진행 중" >진행 중</option>
+                      <option value="발표 대기" >발표 대기</option>
+                      <option value="서비스 완료" >서비스 완료</option>
+                      <option value="보류" >보류</option>
+                    </select>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <select name="reason" id="reason" class="form-control">
+                      <option value="" disabled selected>방문경로</option>
+                      <option value="어학원 홍보지" >어학원 홍보지</option>
+                      <option value="친구 소개" >친구 소개</option>
+                      <option value="길거리 포스터" >길거리 포스터</option>
+                      <option value="토픽시험 당일 홍보지" >토픽시험 당일 홍보지</option>
+                      <option value="면제점 홍보지" >면제점 홍보지</option>
+                    </select>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="birth" name="birth" class="form-control checkin_date" placeholder="생일"> 
+                </div>
+                <div class="form-group col-auto col-6">
+                  <div class="select-wrap one-third">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="country" id="country" class="form-control">
+                      <option value="" disabled selected>국가</option>
+                      <% for(var i=0; i<jdata.country.length; i++){ %>
+                        <option name="country" id="country"> <%= jdata.country[i].nation %> </option>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="mobile" name="mobile" value="" class="form-control" placeholder="전화번호">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="city" name="city" value="" class="form-control" placeholder="도시">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="currentJob" name="currentJob" value="" class="form-control" placeholder="현재 어학원 or 직업">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="number" id="lvOfLs" name="lvOfLs" value="" class="form-control" placeholder="어학원 급수">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="number" id="lvOfTp" name="lvOfTp" value="" class="form-control" placeholder="토픽 급수">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="lvOfEng" name="lvOfEng" value="" class="form-control" placeholder="영어 점수">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="visa" name="visa" value="" class="form-control" placeholder="비자 유형">
+                </div>
+              </div>
+              <h5 class="my-3 font-weight-normal text-muted">학력 정보</h5>
+              <div class="form-row">
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="certificate" name="certificate" value="" class="form-control" placeholder="최종학력">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <select name="gradStatus" id="gradStatus" class="form-control">
+                      <option value="" disabled selected>졸업여부</option>
+                      <option value="졸업" >졸업</option>
+                      <option value="졸업예정" >졸업예정</option>
+                      <option value="수료" >수료</option>
+                      <option value="기타" >기타</option>
+                    </select>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="textarea" id="gradComment" name="gradComment" value="" class="form-control" placeholder="특이사항">
+                </div>
+              </div>
+              <h5 class="my-3 font-weight-normal text-muted">서비스</h5>
+              <div class="form-row">
+                <div class="form-group col-auto col-6">
+                  <select name="wishService" id="wishService" class="form-control">
+                    <option value="" disabled selected>희망서비스</option>
+                    <option value="토탈서비스" >토탈서비스</option>
+                    <option value="TOPIK 서비스" >TOPIK 서비스</option>
+                    <option value="한국어 서비스" >한국어 서비스</option>
+                    <option value="DIY서비스" >DIY서비스</option>
+                    <option value="컨설팅+번역서비스" >컨설팅+번역서비스</option>
+                    <option value="원스탑서비스" >원스탑서비스</option>
+                    <option value="논스탑서비스" >논스탑서비스</option>
+                    <option value="주거지서비스" >주거지서비스</option>
+                  </select>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="wishUniv" name="wishUniv" value="" class="form-control" placeholder="희망 대학">
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="wishMajor" name="wishMajor" value="" class="form-control" placeholder="희망 학과">
+                </div>
+              </div>
+              <h5 class="my-3 font-weight-normal text-muted">부모 정보</h5>
+              <div class="form-row">
+                <div class="form-group col-auto col-6">
+                  <select name="hoku" id="hoku" class="form-control">
+                    <option value="" disabled selected>호구부 유형</option>
+                    <option value="한권-호주:부" >한권-호주:부</option>
+                    <option value="한권-호주:모" >한권-호주:모</option>
+                    <option value="두권" >두권</option>
+                    <option value="세권" >세권</option>
+                  </select>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <select name="parents" id="parents" class="form-control">
+                    <option value="" disabled selected>부모이혼여부</option>
+                    <option value="이혼안함" >이혼안함</option>
+                    <option value="이혼증서있음" >이혼증서있음</option>
+                    <option value="민사판결문 있음" >민사판결문 있음</option>
+                    <option value="기타" >기타</option>
+                  </select>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <select name="feed" id="feed" class="form-control">
+                    <option value="" disabled selected>양육여부</option>
+                    <option value="아버지" >아버지</option>
+                    <option value="어머니" >어머니</option>
+                  </select>
+                </div>
+              </div>
+              <div class="text-right">
+                <input type="submit" value="저장" class="btn btn-primary py-3 px-5">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% include ../partials/end %>
+</body>
+</html>

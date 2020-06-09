@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+	<% include ../partials/nav %>
+	<div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+        	<div class="text">
+            <h1 class="mb-4 bread">Members</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+	<div class="container">
+		<div class="buttons">
+			<a href="/members/new" class="btn btn-default">New</a>
+		</div>
+
+		<div class="member-menu">
+			<a href="/members">Back</a>	</div>
+		<h2>Show</h2>
+	</div>
+	<div class="container">
+		<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="title">Title</th>
+						<th class="author">Author</th>
+						<th class="date">Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% if(members == null || members.length == 0){ %>
+					<tr>
+						<td class="noData" colspan="100">There is no data to show ^^;</td>
+					</tr>
+					<% } %>
+					<% members.forEach(function(member){ %>
+					<tr>
+						<td class="title">
+							<a href="/members/<%= member._id %>"><div class="ellipsis"><%= member.name %></div></a>
+						</td>
+						<td class="author">
+							<div class="ellipsis"><%= member.country %></div>
+						</td>
+						<td class="date">
+							<%= member.status %>
+						</td>
+					</tr>
+					<% }) %>
+				</tbody>
+			</table>
+	</div>
+	<% include ../partials/end %>
+</body>
+</html>

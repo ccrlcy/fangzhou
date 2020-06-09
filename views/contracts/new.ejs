@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+<% include ../partials/nav %>
+<div class="hero-wrap" style="background-image: url('/images/bg_1.jpg');">
+ <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+        <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+          <div class="text">
+            <h1 class="mb-4 bread">계약 입력</h1>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section bg-light">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- 정보 입력  -->
+      <div class="col-lg-12 ">
+        <div class="sidebar-wrap bg-light">
+          <h3 class="heading mb-4">NEW contract</h3>
+          <form class="" action="/contracts" method="post">
+            <div class="fields">
+              <h5 class="my-3 font-weight-normal text-muted">기본 정보</h5>
+              <div class="form-row">
+                <div class="form-group col-auto col-6">
+                  <select name="member" id="member" class="form-control">
+                    <option value="" disabled selected>학생</option>
+                    <% members.forEach(function(member){ %>
+                    <option value="<%= member._id%>"><%= member.name %></option>
+                    <% }) %>
+                  </select>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <input type="text" id="dateOfContract" name="dateOfContract" class="form-control checkin_date" placeholder="계약일"> 
+                </div>
+                <div class="form-group col-auto col-6">
+                  <div class="select-wrap one-third">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="fzcrew" id="fzcrew" class="form-control">
+                      <option value="" disabled selected>담당자</option>
+                      <option value="황인희" >황인희 </option>
+                      <option value="조이" >조이</option>
+                      <option value="조선희" >조선희</option>
+                      <option value="정승환" >정승환 </option>
+                      <option value="이상인" >이상인</option>
+                      <option value="장명호" >장명호</option>
+                      <option value="이주용" >이주용</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <div class="select-wrap one-third">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="serviceName" id="serviceName" class="form-control">
+                      <option value="" disabled selected>서비스</option>
+                      <option value="토탈서비스" >토탈서비스</option>
+                      <option value="DIY토탈서비스" >DIY토탈서비스</option>
+                      <option value="컨설팅+번역서비스" >컨설팅+번역서비스</option>
+                      <option value="원스탑서비스" >원스탑서비스</option>
+                      <option value="논스탑서비스" >논스탑서비스</option>
+                      <option value="주거지서비스" >주거지서비스</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-auto col-6">
+                  <div class="select-wrap one-third">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="serviceSub" id="serviceSub" class="form-control">
+                      <option value="" disabled selected>세부항</option>
+                      <option value="대학" >대학</option>
+                      <option value="대학원" >대학원</option>
+                      <option value="어학원 + 대학" >어학원 + 대학</option>
+                      <option value="어학원 + 대학원" >어학원 + 대학원</option>
+                      <option value="어학원" >어학원</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-gruop col-auto col-6">
+                  <input type="number" id="serviceNum" name="serviceNum" class="form-control" placeholder="지원수"> 
+                </div>
+                <div class="form-group col-auto col-6">
+                  <div class="select-wrap one-third">
+                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                    <select name="current" id="current" class="form-control">
+                      <option value="" disabled selected>지급방법</option>
+                      <option value="원화" >원화 </option>
+                      <option value="위챗페이" >위챗페이</option>
+                      <option value="알리페이" >알리페이</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="text-right">
+                <input type="submit" value="저장" class="btn btn-primary py-3 px-5">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% include ../partials/end %>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<% include ../partials/head %>
+	</head>
+	<body>
+		<% include ../partials/nav %>
+		<div class="container home home-welcome">
+			<div class="jumbotron">
+				<h1>FZ 게시판</h1>
+				<p>이 이사이트는 방주유학원 게시판 입니다. </p>
+			</div>
+		</div>
+		<ul id="chat"></ul>
+		<form action="">
+			<input type="text" id="m" autocomplete="off" /><button onclick="send()">Send</button>
+		</form>
+<script src="../socket.io/socket.io.js"></script>
+<script>
+	$(function (){
+		var socket = io();
+		$('form').submit(function() {
+			socket.emit('chat message', $(#m).val());
+			$('#m').val('');
+			return false;
+		});
+	});
+	
+</script>
+	</body>
+</html>
